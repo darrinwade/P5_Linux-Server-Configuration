@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css')}}" } >
+	<title>Category Item Edit</title>
+</head>
+<body>
+	<div class="container">
+		<div id="header">
+			<h1>Edit Category Item</h1>
+		</div>
+		<div class="row"><br></div>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul>
+					{% for message in messages %}
+						<li><strong>{{message}}</strong></li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+
+		<form action="{{url_for('editItemInCategory', item_id=ItemToEdit.id)}}" method='post'>
+			<div class="row" >
+				<div class="col-md-2">Name:</div>
+				<div class="col-md-10"><input type='text' size='50' name="ItemName" value="{{ItemToEdit.name}}"></div>
+			</div>
+			<div class="row"><br></div>
+			<div class="row">
+				<div class="col-md-2">Description:</div>
+				<div class="col-md-10"><textarea rows="5" cols="100" name="ItemDesc">{{ItemToEdit.desc}}</textarea></div>
+			</div>
+			<div class="row">
+				<div class="col-md-42">
+					<input type='submit' value='Save'>
+					<a href='{{url_for('showItemsInCategory', category_id=ItemToEdit.category_id)}}'>Cancel</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

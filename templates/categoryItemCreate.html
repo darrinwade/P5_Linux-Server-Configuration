@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css')}}" } >
+	<title>Category Item Create</title>
+</head>
+<body>
+	<div class="container">
+		<div id="header">
+			<h1>Create Item Category</h1>
+		</div>
+		<div class="row"><br></div>
+		<form action="{{url_for('createItemInCategory', category_id=category_id)}}" method='post'>
+			<div class="row" >
+				<div class="col-md-2">Name:</div>
+				<div class="col-md-10"><input type='text' size='50' name=ItemName ></div>
+			</div>
+			<div class="row"><br></div>
+			<div class="row">
+				<div class="col-md-2">Description:</div>
+				<div class="col-md-10"><textarea rows="5" cols="100" name=ItemDesc ></textarea>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<input type='submit' value='Create'>
+					<a href='{{url_for('showItemsInCategory', category_id=category_id)}}'>Cancel</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

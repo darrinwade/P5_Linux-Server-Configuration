@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css')}}" } >
+	<title>Category View</title>
+</head>
+<body>
+	<div class="container">
+		<div id="header">
+			<h1>View Category Details</h1>
+		</div>
+		<div class="row"><br></div>
+		<form action="{{url_for('editCategoryEntry', category_id=CategoryToView.id)}}" method='get'>
+			<div class="row" >
+				<div class="col-md-2">Name:</div>
+				<div class="col-md-10">{{CategoryToView.name}}</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">Description:</div>
+				<div class="col-md-10">{{CategoryToView.desc}}</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">Create Date:</div>
+				<div class="col-md-10">{{CategoryToView.createDt}}</textarea></div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">Last Modified Date</div>
+				<div class="col-md-10">{{CategoryToView.modifyDt}}</textarea></div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<input type='submit' value='Edit'>
+					<a href='{{url_for('showCategories')}}'>Cancel</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

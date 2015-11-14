@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css')}}" } >
+	<title>Category Items</title>
+</head>
+<body>
+	<div class="container">
+		<div id="header">
+			<h1>Category Item Information</h1>
+		</div>
+		<div class="row"><br></div>
+
+		<div id="mainnavbar">
+			<a href='{{url_for('createItemInCategory', category_id=ParentCategory)}}'>[Create Item Entry]</a>
+			<a href='{{url_for('showCategories')}}'>[Back To Main Page]</a>
+		    <a href='{{url_for('showCategoryItemsJSON', category_id=ParentCategory)}}'>[Show All Category Item Entries In JSON Format]</a>
+		</div>
+		<div class="row"><br></div>
+
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul>
+					{% for message in messages %}
+						<li><strong>{{message}}</strong></li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+
+		<div class="row"><br></div>
+
+		{% for item in ItemList %}
+			<div class="row">
+				<div class="col-md-12">{{item.name}}</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<a href='{{url_for('viewItemInCategory', item_id=item.id)}}'>[View]</a>
+					<a href='{{url_for('editItemInCategory', item_id=item.id)}}'>[Edit]</a>
+				    <a href='{{url_for('deleteItemInCategory', item_id=item.id)}}'>[Delete]</a>
+				    <a href='{{url_for('showSingleCategoryItemJSON', item_id=item.id)}}'>[Show JSON View]</a>
+				</div>
+			</div>
+			<div class="row"><br></div>
+		{% endfor %}
+	</div>
+</body>
+</html>

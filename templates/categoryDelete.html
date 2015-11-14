@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css')}}" } >
+	<title>Category Delete</title>
+</head>
+<body>
+	<div class="container">
+		<div id="header">
+			<h1>Delete Category</h1>
+		</div>
+		<div class="row"><br></div>
+		<div class="row">
+			<h2>Are you sure you want to delete '{{Category2Delete.name}}'?!?<br><br>
+				Note:  All child items of this category will be deleted as well.<br>
+				Click 'Cancel' if you do not want to continue this delete process.</h2>
+		</div>
+		<form action="{{url_for('deleteCategoryEntry', category_id=Category2Delete.id)}}" method='post'>
+			<input type='submit' value='Delete'> <a href='{{url_for('showCategories')}}'>Cancel</a>
+		</form>
+	</div>
+</body>
+</html>

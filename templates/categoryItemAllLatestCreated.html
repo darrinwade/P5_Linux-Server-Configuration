@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css')}}" } >
+	<title>Latest Category Items</title>
+</head>
+<body>
+	<div class="container">
+		<div id="header" >
+			<h1>Last Created Category Items</h1>
+		</div>
+		<div class="row"><br><br></div>
+		{% for item in ItemList %}
+			<div class="row">
+				<div class="col-md-12">{{item[4]}}, ({{item[3]}}, {{item[5]}})</div>
+			</div>
+			<div class="row"><br></div>
+		{% endfor %}
+		<div class="row"><br></div>
+		<div class="row">
+			<div class="col-md-2">
+				<a href='{{url_for('showCategories')}}'>Return to Main Page...</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

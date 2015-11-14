@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css')}}" } >
+	<title>Category Item Delete</title>
+</head>
+<body>
+	<div class="container">
+		<div id="header">
+			<h1>Category Item Delete</h1>
+		</div>
+		<div class="row"><br></div>
+		<div class="row">
+			<h2>Are you sure you want to process the item delete, '{{Item2Delete.name}}'???</h2>
+		</div>
+		<form action="{{url_for('deleteItemInCategory', item_id=Item2Delete.id)}}" method='post'>
+			<input type='submit' value='Delete'>
+			 <a href='{{url_for('showItemsInCategory', category_id=Item2Delete.category_id)}}'>Cancel</a>
+		</form>
+	</div>
+</body>
+</html>
